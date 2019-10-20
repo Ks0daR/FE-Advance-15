@@ -22,7 +22,7 @@ console.log(userSettings);
 function getUserInfo(array) {
   let info = '';
   const keys = Object.keys(userSettings);
-  for (key of keys) {
+  for (const key of keys) {
     info += `${key}: ${array[key]} \n`;
   }
   return info;

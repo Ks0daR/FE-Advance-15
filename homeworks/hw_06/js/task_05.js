@@ -1,0 +1,8 @@
+const { users } = require('./users');
+
+// console.log(users.length);
+
+const getUserWithEmail = (obj, email) => obj.find(e => e.email === email);
+
+console.log(getUserWithEmail(users, 'shereeanthony@kog.com')); // {объект пользователя Sheree Anthony}
+console.log(getUserWithEmail(users, 'elmahead@omatom.com')); // {объект пользователя Elma Head}

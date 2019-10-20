@@ -1,12 +1,10 @@
 const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 const MESSAGE_ERROR_LOGIN_LENGTH = 'Ошибка! Логин должен быть от 4 до 16 символов';
-const MESSAGE_ERROR_LIGIN_ALREDY_USED = 'Такой логин уже используется!';
+const MESSAGE_ERROR_LOGIN_ALREDY_USED = 'Такой логин уже используется!';
 const MESSAGE_WELCOME = 'Логин успешно добавлен!';
 
 const isLoginValid = login => login.length >= 4 && login.length <= 16;
-const isLoginUnique = function (allLogins, login) {
-  if (logins.includes(login)) return isLoginUnique;
-};
+const isLoginUnique = (allLogins, login) => !allLogins.includes(login);
 
 const addLogin = function (allLogins, login) {
   let message = MESSAGE_WELCOME;
@@ -15,8 +13,8 @@ const addLogin = function (allLogins, login) {
     console.log(message);
     return;
   }
-  if (isLoginUnique(allLogins, login)) {
-    message = MESSAGE_ERROR_LIGIN_ALREDY_USED;
+  if (!isLoginUnique(allLogins, login)) {
+    message = MESSAGE_ERROR_LOGIN_ALREDY_USED;
     console.log(message);
     return;
   }

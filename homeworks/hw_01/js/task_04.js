@@ -4,12 +4,11 @@ const amountDroid = prompt('Введите необходимое количес
 const priceBuyDroid = amountDroid * pricePerDroid;
 if (amountDroid === null) {
   console.log('Отменено пользователем');
-}
-if (priceBuyDroid > credits) {
+} else if (priceBuyDroid > credits) {
   console.log('Недостаточно средств');
-}
-
-if (priceBuyDroid > 0 && priceBuyDroid < credits) {
+} else if (priceBuyDroid > 0 && priceBuyDroid < credits) {
   const creditsBalanse = credits - priceBuyDroid;
-  console.log(`Вы купили ${amountDroid} дроидов на сумму ${priceBuyDroid}. Остаток на счету ${creditsBalanse}`);
+  console.log(
+    `Вы купили ${amountDroid} дроидов на сумму ${priceBuyDroid}. Остаток на счету ${creditsBalanse}`,
+  );
 }
