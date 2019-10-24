@@ -84,4 +84,5 @@ const users = [
     age: 39,
   },
 ];
-module.exports = { users };
+
+export default users;

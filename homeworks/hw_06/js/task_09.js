@@ -1,4 +1,4 @@
-const { users } = require('./users');
+import users from './users.js';
 
 console.log(users.length);
 
