@@ -14,8 +14,8 @@
 // Создай функцию destroyBoxes(), которая очищает div#boxes.
 
 const refs = {
-  render: document.querySelector('button'),
-  destroy: document.querySelector('button').nextElementSibling,
+  render: document.querySelector('.button-render'),
+  destroy: document.querySelector('.button-destroy'),
   res: document.querySelector('#boxes'),
   counter: document.querySelector('input[type="number"]'),
 };
