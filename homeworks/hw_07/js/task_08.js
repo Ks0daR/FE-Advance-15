@@ -20,21 +20,30 @@ const refs = {
   counter: document.querySelector('input[type="number"]'),
 };
 
+function generateRandomNumber() {
+  return Math.floor(Math.random() * 255);
+}
+
+function generateRandomColor() {
+  return `rgb(${generateRandomNumber()},${generateRandomNumber()},${generateRandomNumber()})`;
+}
+
 function createBoxes(amount) {
-  const element = new Array(amount)
+  const element = Array(amount)
     .fill('')
     .map((e, i) => {
       const div = document.createElement('div');
-      div.style.cssText = `height = ${30 + i * 10}px; width = ${30 + i * 10}px`;
-      div.style.background = '#444444';
+      div.style.height = `${30 + i * 10}px`;
+      div.style.width = `${30 + i * 10}px`;
+      div.style.background = generateRandomColor();
       return div;
     });
   console.log(element);
   return element;
 }
 function setBoxes() {
-  const num = refs.counter.value;
-  refs.res.append(createBoxes(num));
+  const num = +refs.counter.value;
+  refs.res.append(...createBoxes(num));
 }
 function destroyBoxes() {
   refs.res.innerHTML = '';

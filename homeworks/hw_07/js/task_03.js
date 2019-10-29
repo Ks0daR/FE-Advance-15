@@ -18,17 +18,17 @@ const images = [
 
 const ref = document.querySelector('#gallery');
 
-// const imagesList = images.map(({ url, alt }) => `<li><img src=${url} alt=${alt}</li>`);
-// ref.insertAdjacentHTML('afterbegin', imagesList);
+const imagesList = images.map(({ url, alt }) => `<li class ="gallery-listItem"><img class ="gallery-img" src=${url} alt=${alt}</li>`);
+ref.insertAdjacentHTML('afterbegin', imagesList);
 
-const imagesList = images.map(({ url, alt }) => {
-  const li = document.createElement('li');
-  const img = document.createElement('img');
-  img.src = url;
-  img.alt = alt;
-  li.style.cssText = 'display: flex; justify-content: center;';
-  img.style.cssText = 'width: 200px';
-  li.append(img);
-  return li;
-});
-ref.append(...imagesList);
+// const imagesList = images.map(({ url, alt }) => {
+//   const li = document.createElement('li');
+//   const img = document.createElement('img');
+//   img.src = url;
+//   img.alt = alt;
+//   li.style.cssText = 'display: flex; justify-content: center;';
+//   img.style.cssText = 'width: 200px';
+//   li.append(img);
+//   return li;
+// });
+// ref.append(...imagesList);
