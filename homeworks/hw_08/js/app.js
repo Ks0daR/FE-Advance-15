@@ -42,6 +42,20 @@ function closeModal() {
   refs.fullImage.alt = '';
 }
 
+function closeModalByClick({ target }) {
+  if (target.className === 'lightbox__content') {
+    closeModal();
+  }
+}
+
+function closeModalByKey({ keyCode }) {
+  if (keyCode === 27) {
+    closeModal();
+  }
+}
+
+window.addEventListener('keydown', closeModalByKey);
+refs.modal.addEventListener('click', closeModalByClick);
 refs.closeButton.addEventListener('click', closeModal);
 refs.output.addEventListener('click', showModal);
 refs.output.insertAdjacentHTML('afterbegin', [...listElement].join(''));
