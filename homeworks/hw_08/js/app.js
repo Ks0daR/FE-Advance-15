@@ -28,6 +28,8 @@ const listElement = galleryItems.map((e) => {
   return element;
 });
 
+const modalImageUrl = galleryItems.map(e => e.original);
+
 function showModal(e) {
   e.preventDefault();
   if (e.target === e.currentTarget) return;
@@ -48,13 +50,27 @@ function closeModalByClick({ target }) {
   }
 }
 
-function closeModalByKey({ keyCode }) {
-  if (keyCode === 27) {
+function ModalImage(e, index) {
+  console.log(e.keyCode);
+  if (e.keyCode === 39) {
+    refs.fullImage.src = modalImageUrl[(index += 1)];
+  }
+  if (e.keyCode === 37) {
+    refs.fullImage.src = modalImageUrl[(index -= 1)];
+  }
+}
+function checkInputKey(e) {
+  const index = modalImageUrl.indexOf(e.target.href);
+  if (e.keyCode === 27) {
     closeModal();
+  }
+
+  if (e.keyCode === 39 || e.keyCode === 37) {
+    ModalImage(e, index);
   }
 }
 
-window.addEventListener('keydown', closeModalByKey);
+window.addEventListener('keydown', checkInputKey);
 refs.modal.addEventListener('click', closeModalByClick);
 refs.closeButton.addEventListener('click', closeModal);
 refs.output.addEventListener('click', showModal);
