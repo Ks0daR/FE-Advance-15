@@ -28,8 +28,6 @@ const refs = {
   fullImage: document.querySelector('.js-image'),
 };
 
-const modalImageUrl = galleryItems.map(e => e.original);
-
 function showModal(e) {
   e.preventDefault();
   if (e.target === e.currentTarget) return;
@@ -49,24 +47,54 @@ function closeModalByClick({ target }) {
     closeModal();
   }
 }
-
-function modalImage(e) {
-  let index = modalImageUrl.indexOf(e.target.href);
-  if (e.keyCode === 39) {
-    refs.fullImage.src = modalImageUrl[(index += 1)];
+function nextModalImage() {
+  if (refs.modal.classList.contains('is-open')) {
+    let modalImageUrl = galleryItems
+      .map(e => e.original)
+      .indexOf(refs.fullImage.src);
+    if (modalImageUrl >= 0 && modalImageUrl <= galleryItems.length - 1) {
+      if (modalImageUrl === galleryItems.length - 1) {
+        modalImageUrl = -1;
+      }
+      console.log(modalImageUrl);
+      refs.fullImage.src = galleryItems[modalImageUrl += 1].original;
+    }
   }
-  if (e.keyCode === 37) {
-    refs.fullImage.src = modalImageUrl[(index -= 1)];
-  }
-  console.log(index);
 }
+function prevModalImage() {
+  if (refs.modal.classList.contains('is-open')) {
+    let modalImageUrl = galleryItems
+      .map(e => e.original)
+      .indexOf(refs.fullImage.src);
+    if (modalImageUrl >= 0 && modalImageUrl <= galleryItems.length - 1) {
+      if (modalImageUrl === 0) {
+        modalImageUrl = galleryItems.length;
+      }
+      refs.fullImage.src = galleryItems[modalImageUrl - 1].original;
+    }
+  }
+}
+// function modalImage(e) {
+//   let index = modalImageUrl.indexOf(refs.fullImage.src);
+//   if (e.keyCode === 39 && index < modalImageUrl.length - 1) {
+//     refs.fullImage.src = modalImageUrl[(index += 1)];
+//   }
+//   if (e.keyCode === 37 && index > 0) {
+//     refs.fullImage.src = modalImageUrl[(index -= 1)];
+//   }
+//   console.log(index);
+// }
 function checkInputKey(e) {
   if (e.keyCode === 27) {
     closeModal();
   }
 
-  if (e.keyCode === 39 || e.keyCode === 37) {
-    modalImage(e);
+  if (e.keyCode === 39) {
+    nextModalImage(e);
+  }
+
+  if (e.keyCode === 37) {
+    prevModalImage(e);
   }
 }
 
