@@ -1,12 +1,5 @@
 import galleryItems from './gallery-items.js';
 
-const refs = {
-  output: document.querySelector('.js-gallery'),
-  modal: document.querySelector('.js-lightbox'),
-  closeButton: document.querySelector('.js-button'),
-  fullImage: document.querySelector('.js-image'),
-};
-
 const listElement = galleryItems.map((e) => {
   const element = `<li class="gallery__item">
             <a
@@ -27,6 +20,13 @@ const listElement = galleryItems.map((e) => {
           </li>`;
   return element;
 });
+
+const refs = {
+  output: document.querySelector('.js-gallery'),
+  modal: document.querySelector('.js-lightbox'),
+  closeButton: document.querySelector('.js-button'),
+  fullImage: document.querySelector('.js-image'),
+};
 
 const modalImageUrl = galleryItems.map(e => e.original);
 
@@ -50,23 +50,23 @@ function closeModalByClick({ target }) {
   }
 }
 
-function ModalImage(e, index) {
-  console.log(e.keyCode);
+function modalImage(e) {
+  let index = modalImageUrl.indexOf(e.target.href);
   if (e.keyCode === 39) {
     refs.fullImage.src = modalImageUrl[(index += 1)];
   }
   if (e.keyCode === 37) {
     refs.fullImage.src = modalImageUrl[(index -= 1)];
   }
+  console.log(index);
 }
 function checkInputKey(e) {
-  const index = modalImageUrl.indexOf(e.target.href);
   if (e.keyCode === 27) {
     closeModal();
   }
 
   if (e.keyCode === 39 || e.keyCode === 37) {
-    ModalImage(e, index);
+    modalImage(e);
   }
 }
 
