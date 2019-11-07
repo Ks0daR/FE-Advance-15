@@ -9,6 +9,7 @@ const listElement = galleryItems.map((e) => {
               <img
                 class="gallery__image"
                 src="${e.preview}"
+                data-lazy="${e.lazyLoad}"
                 data-source="${e.original}"
                 alt="${e.description}"
               />
@@ -49,28 +50,23 @@ function closeModalByClick({ target }) {
 }
 function nextModalImage() {
   if (refs.modal.classList.contains('is-open')) {
-    let modalImageUrl = galleryItems
-      .map(e => e.original)
-      .indexOf(refs.fullImage.src);
-    if (modalImageUrl >= 0 && modalImageUrl <= galleryItems.length - 1) {
+    let modalImageUrl = galleryItems.map(e => e.original).indexOf(refs.fullImage.src);
+    if (modalImageUrl <= galleryItems.length - 1) {
       if (modalImageUrl === galleryItems.length - 1) {
         modalImageUrl = -1;
       }
-      console.log(modalImageUrl);
-      refs.fullImage.src = galleryItems[modalImageUrl += 1].original;
+      refs.fullImage.src = galleryItems[(modalImageUrl += 1)].original;
     }
   }
 }
 function prevModalImage() {
   if (refs.modal.classList.contains('is-open')) {
-    let modalImageUrl = galleryItems
-      .map(e => e.original)
-      .indexOf(refs.fullImage.src);
-    if (modalImageUrl >= 0 && modalImageUrl <= galleryItems.length - 1) {
+    let modalImageUrl = galleryItems.map(e => e.original).indexOf(refs.fullImage.src);
+    if (modalImageUrl >= 0) {
       if (modalImageUrl === 0) {
         modalImageUrl = galleryItems.length;
       }
-      refs.fullImage.src = galleryItems[modalImageUrl - 1].original;
+      refs.fullImage.src = galleryItems[(modalImageUrl -= 1)].original;
     }
   }
 }
@@ -103,3 +99,26 @@ refs.modal.addEventListener('click', closeModalByClick);
 refs.closeButton.addEventListener('click', closeModal);
 refs.output.addEventListener('click', showModal);
 refs.output.insertAdjacentHTML('afterbegin', [...listElement].join(''));
+
+const images = document.querySelectorAll('.gallery__image');
+
+const lazyLoad = (target) => {
+  const options = {
+    threshold: 0.6,
+  };
+  const io = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        const imgLink = img.dataset.lazy;
+
+        img.setAttribute('src', imgLink);
+
+        observer.disconnect();
+      }
+    });
+  }, options);
+  io.observe(target);
+};
+
+images.forEach(image => lazyLoad(image));
