@@ -1,18 +1,25 @@
 import refs from './refs';
 
-const theme = localStorage.getItem('theme');
+const Theme = {
+  LIGHT: 'light-theme',
+  DARK: 'dark-theme',
+};
 
-console.log(theme);
+const theme = localStorage.getItem('theme') || Theme.LIGHT;
 
+refs.body.classList.add(theme);
+if (theme === Theme.DARK) {
+  document.getElementById('theme-switch-control').checked = true;
+}
 
 function switchThemes(e) {
   if (e.target.checked) {
-    console.log(e);
-    refs.body.classList.add('dark-theme');
-    localStorage.setItem('theme', 'dark');
-  } else {
+    refs.body.classList.add(Theme.DARK);
+    localStorage.setItem('theme', Theme.DARK);
+  }
+  if (!e.target.checked) {
     refs.body.classList.remove('dark-theme');
-    localStorage.setItem('theme', 'white');
+    localStorage.setItem('theme', Theme.LIGHT);
   }
 }
 

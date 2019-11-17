@@ -6,4 +6,3 @@ import switchThemes from './switchThemes';
 makeUpCard(menuData, refs.output);
 
 refs.switch.addEventListener('change', switchThemes);
-console.log(refs.body);
