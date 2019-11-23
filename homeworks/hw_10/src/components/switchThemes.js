@@ -12,12 +12,12 @@ if (theme === Theme.DARK) {
   document.getElementById('theme-switch-control').checked = true;
 }
 
-function switchThemes(e) {
-  if (e.target.checked) {
+function switchThemes({ target }) {
+  if (target.checked) {
     refs.body.classList.add(Theme.DARK);
     localStorage.setItem('theme', Theme.DARK);
   }
-  if (!e.target.checked) {
+  if (!target.checked) {
     refs.body.classList.remove('dark-theme');
     localStorage.setItem('theme', Theme.LIGHT);
   }
