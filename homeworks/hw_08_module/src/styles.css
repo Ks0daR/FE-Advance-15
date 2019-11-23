@@ -1,0 +1,4 @@
+.list__element{
+  display: grid;
+  width: 200px;
+}
