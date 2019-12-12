@@ -1,2 +1,2 @@
 import './getInputValue';
-import './fetchData';
+import './checkedManyMaches';

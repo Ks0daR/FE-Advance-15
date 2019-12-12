@@ -1,14 +1,19 @@
 import debounce from 'lodash.debounce';
 import refs from './refs';
+import checkedManyMaches from './checkedManyMaches';
+import PNotify from '../../node_modules/pnotify/dist/es/PNotify';
 
-let inputValue = 0;
+const baseUrl = 'https://restcountries.eu/rest/v2/name/';
 
 function getInputValue({ target }) {
-  inputValue = target.value;
-  console.log(inputValue);
-  return inputValue;
+  const inputValue = target.value;
+  fetch(`${baseUrl}${inputValue}`)
+    .then(response => response.json())
+    .then((data) => {
+      checkedManyMaches(data);
+    })
+    .catch(error => console.error('Error: ', error));
 }
 
 const debouncedGetInput = debounce(getInputValue, 500);
 refs.inputText.addEventListener('input', debouncedGetInput);
-console.log(inputValue);

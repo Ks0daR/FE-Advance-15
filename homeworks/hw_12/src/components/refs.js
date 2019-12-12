@@ -1,6 +1,6 @@
 const refs = {
   inputText: document.querySelector('.js-input'),
-  inputBtnSend: document.querySelector('.js-btn-send'),
+  output: document.querySelector('.display-info'),
 };
 
 export default refs;
