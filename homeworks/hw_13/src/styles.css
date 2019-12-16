@@ -1,3 +1,9 @@
-html {
-  box-sizing: border-box;
+
+
+.rendered-image{
+  width: 300px;
+}
+
+.output-js{
+  list-style: none;
 }

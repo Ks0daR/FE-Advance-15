@@ -2,7 +2,17 @@ const baseUrl =  'https://pixabay.com/api/?image_type=photo&orientation=horizont
 
 export default {
   page: 1,
-  fetchQuery(query) {
+  query: '',
+
+  get searchQuary() {
+    return this.query;
+  },
+
+  set searchQuary(input) {
+    this.query = input;
+  },
+
+  fetchQuery() {
     const options = {
       headers: {
         key: '14644057-ca985d2fae582aa79c730fd25',
@@ -10,12 +20,10 @@ export default {
       },
     };
 
-    const paramenetsRequest = `&q=${query}&image_type=photo`;
+    const paramenetsRequest = `&q=${this.query}&image_type=photo`;
     const numberPage = `&page=${this.page}`;
 
-    fetch(`${baseUrl}${paramenetsRequest}${numberPage}`)
-      .then(response => response.json())
-      .then(data => console.log(data));
+    return fetch(`${baseUrl}${paramenetsRequest}${numberPage}`).then(response => response.json(),);
   },
 };
 
