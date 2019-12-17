@@ -14,3 +14,17 @@
 .stats-item {
   padding: 0 20px;
 }
+.grid{
+  display: grid;
+}
+
+.grid-sizer,
+.grid-item {
+  width: 33%;
+  margin-bottom: 10px;
+}
+
+.grid-item__img{
+  display: block;
+  max-width: 100%;
+}

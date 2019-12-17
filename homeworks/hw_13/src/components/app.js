@@ -1,1 +1,2 @@
 import './handlingFetch';
+import './masonry';
