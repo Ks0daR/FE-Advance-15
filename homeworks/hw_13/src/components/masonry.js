@@ -1,17 +1,21 @@
 import Masonry from 'masonry-layout';
 import imagesLoaded from 'imagesloaded';
 
-const masonrySample = new Masonry( '.output-js', {
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    gutter: 10,
-    stagger: '0.03s',
-    percentPosition: true,
-  });
 
-const imagesLoadedSample = imagesLoaded('.output-js');
+const masonrySample = new Masonry('.output-js', {
+  itemSelector: '.grid-item',
+  columnWidth: '.grid-sizer',
+  gutter: 10,
+  stagger: '0.03s',
+  percentPosition: true,
+});
 
-imagesLoadedSample.on('progress', ()=>{
-    masonrySample.layout()
-})
+// const imagesLoadedSample = imagesLoaded('.output-js');
 
+// imagesLoadedSample.on('progress', () => {
+//   masonrySample.layout();
+// });
+
+// console.log(imagesLoadedSample);
+
+export default masonrySample;

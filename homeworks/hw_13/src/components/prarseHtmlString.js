@@ -15,8 +15,8 @@ export default parseHtmlString;
 
 // <li><img src="${e.largeImageURL}" alt="${e.id}" class="rendered-image"></li>
 
-{
-  /* <div class="stats">
+
+/* <div class="stats">
      <p class="stats-item">
         <i class="material-icons">thumb_up</i>
        ${e.likes}
@@ -34,4 +34,3 @@ export default parseHtmlString;
        ${e.downloads}
  </p>
     </div> */
-}
