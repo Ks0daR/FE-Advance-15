@@ -1,6 +1,6 @@
 import Masonry from 'masonry-layout';
 import imagesLoaded from 'imagesloaded';
-
+import refs from './refs';
 
 const masonrySample = new Masonry('.output-js', {
   itemSelector: '.grid-item',
@@ -10,12 +10,12 @@ const masonrySample = new Masonry('.output-js', {
   percentPosition: true,
 });
 
-// const imagesLoadedSample = imagesLoaded('.output-js');
+const imagesLoadedSample = imagesLoaded(refs.output);
 
-// imagesLoadedSample.on('progress', () => {
-//   masonrySample.layout();
-// });
+imagesLoadedSample.on('progress', () => {
+  masonrySample.layout();
+});
 
-// console.log(imagesLoadedSample);
+console.log(imagesLoadedSample);
 
 export default masonrySample;

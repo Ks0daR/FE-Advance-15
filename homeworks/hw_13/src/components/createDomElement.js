@@ -10,12 +10,12 @@ function createDomElement(data) {
     img.classList.add('grid-item__img');
     img.src = e.largeImageURL;
     div.appendChild(img);
-    refs.output.appendChild(div);
     return div;
   });
-    // renderListElements(element);
-  masonrySample.appended(elements);
-  masonrySample.layout(...elements);
+  // renderListElements(element);
+  refs.output.append(...elements);
+  masonrySample.appended([...elements]);
+  // masonrySample.layout(...elements);
 }
 
 export default createDomElement;
