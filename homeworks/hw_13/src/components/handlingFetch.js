@@ -1,12 +1,11 @@
 import fetchRequest from './apiService';
 import refs from './refs';
-import parseHtmlString from './prarseHtmlString';
 import clearList from './clearList';
 import createDomElement from './createDomElement';
 
 function getInputValue(e) {
   e.preventDefault();
-  clearList();
+  // clearList();
   fetchRequest.page += 0;
   const inputValue = e.target.elements.input.value;
   fetchRequest.searchQuary = inputValue;

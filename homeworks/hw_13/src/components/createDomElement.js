@@ -1,4 +1,4 @@
-import renderListElements from './renderListElements';
+import imagesLoaded from 'imagesloaded';
 import masonrySample from './masonry';
 import refs from './refs';
 
@@ -12,10 +12,12 @@ function createDomElement(data) {
     div.appendChild(img);
     return div;
   });
-  // renderListElements(element);
   refs.output.append(...elements);
   masonrySample.appended([...elements]);
-  // masonrySample.layout(...elements);
+  imagesLoaded('.grid').on('progress', () => {
+    console.log('imagesLoadedSample.onProgress called');
+    masonrySample.layout();
+  });
 }
 
 export default createDomElement;

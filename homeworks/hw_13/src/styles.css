@@ -1,26 +1,8 @@
-.rendered-image {
-  width: 300px;
-}
 
-.output-js {
-  list-style: none;
-}
-
-.stats {
-  display: flex;
-  justify-content: center;
-}
-
-.stats-item {
-  padding: 0 20px;
-}
-.grid{
-  display: grid;
-}
 
 .grid-sizer,
 .grid-item {
-  width: 33%;
+  width: 30%;
   margin-bottom: 10px;
 }
 
