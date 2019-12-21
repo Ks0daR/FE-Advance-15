@@ -4,7 +4,7 @@ import refs from './refs';
 
 function createDomElement(data) {
   const elements = data.map((e) => {
-    const div = document.createElement('div');
+    const div = document.createElement('li');
     const img = document.createElement('img');
     div.classList.add('photo-card', 'grid-item');
     img.classList.add('grid-item__img');
@@ -15,7 +15,6 @@ function createDomElement(data) {
   refs.output.append(...elements);
   masonrySample.appended([...elements]);
   imagesLoaded('.grid').on('progress', () => {
-    console.log('imagesLoadedSample.onProgress called');
     masonrySample.layout();
   });
 }

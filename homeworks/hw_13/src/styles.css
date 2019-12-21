@@ -1,5 +1,36 @@
+.form-js{
+  display: flex;
+  justify-content: center;
+}
 
+.input-js{
+border-radius: 5px;
+font-size: 24px;
+background-color: aqua;
+text-align: center;
+}
 
+.submint-js{
+  font-family: sans-serif;
+  font-size: 18px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.loadMore-js{
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 18px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+.hidden{
+  display: none;
+}
+
+.output-js{
+  list-style: none;
+}
 .grid-sizer,
 .grid-item {
   width: 30%;

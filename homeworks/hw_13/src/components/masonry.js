@@ -4,6 +4,7 @@ import imagesLoaded from 'imagesloaded';
 const masonrySample = new Masonry('.grid', {
   itemSelector: '.grid-item',
   columnWidth: '.grid-sizer',
+  gutter: 10,
   stagger: '0.03s',
   percentPosition: true,
 });

@@ -1,7 +1,8 @@
 import refs from './refs';
 
 function clearList() {
-  refs.output.innerHTML = '';
+  const elements = document.querySelectorAll('div.photo-card');
+  console.log(elements);
 }
 
 export default clearList;
