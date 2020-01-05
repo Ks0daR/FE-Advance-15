@@ -5,7 +5,9 @@ import createDomElement from './createDomElement';
 
 function getInputValue(e) {
   e.preventDefault();
+  clearList();
   fetchRequest.page += 0;
+  refs.loader.classList.remove('done');
   const inputValue = e.target.elements.input.value;
   fetchRequest.input = true;
   fetchRequest.searchQuary = inputValue;
@@ -15,8 +17,13 @@ function getInputValue(e) {
 
 function addMoreContent() {
   if (fetchRequest.input) {
+    refs.loader.classList.remove('done');
     refs.loadMore.classList.remove('hidden');
     fetchRequest.page += 1;
+    window.scrollTo({
+      top: 1000,
+      behavior: 'smooth',
+    });
     fetchRequest.fetchQuery().then(data => createDomElement(data.hits));
   }
 }

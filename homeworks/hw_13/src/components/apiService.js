@@ -14,13 +14,6 @@ export default {
   },
 
   fetchQuery() {
-    const options = {
-      headers: {
-        key: '14644057-ca985d2fae582aa79c730fd25',
-        image_type: 'photo',
-      },
-    };
-
     const paramenetsRequest = `&q=${this.query}&image_type=photo`;
     const numberPage = `&page=${this.page}`;
 
