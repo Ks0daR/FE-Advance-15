@@ -20,10 +20,13 @@ function addMoreContent() {
     refs.loader.classList.remove('done');
     refs.loadMore.classList.remove('hidden');
     fetchRequest.page += 1;
-    window.scrollTo({
-      top: 1000,
-      behavior: 'smooth',
-    });
+    setTimeout(() => {
+      window.scrollTo({
+        top: 1000,
+        behavior: 'smooth',
+      });
+    }, 3000);
+
     fetchRequest.fetchQuery().then(data => createDomElement(data.hits));
   }
 }
